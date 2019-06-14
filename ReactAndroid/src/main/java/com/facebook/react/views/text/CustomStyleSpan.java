@@ -102,6 +102,16 @@ public class CustomStyleSpan extends MetricAffectingSpan implements ReactSpan {
       want |= Typeface.ITALIC;
     }
 
+    if(((weight == Typeface.BOLD) ||
+        ((oldStyle & Typeface.BOLD) != 0 && weight == ReactTextShadowNode.UNSET)) && family != null && family.contains("BoldItalic")) {
+              family = "Roboto-BoldItalic";
+    }
+
+    if(((weight == Typeface.BOLD) ||
+        ((oldStyle & Typeface.BOLD) != 0 && weight == ReactTextShadowNode.UNSET)) && family != null && family.contains("Italic")) {
+              family = "Roboto-Italic";
+    }
+
     if (family != null) {
       typeface = ReactFontManager.getInstance().getTypeface(family, want, assetManager);
     } else if (typeface != null) {
